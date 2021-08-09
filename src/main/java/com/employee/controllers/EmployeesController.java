@@ -30,7 +30,7 @@ public class EmployeesController {
 	DeptService deptService;
 	
 	
-	  @GetMapping("/") private String getDefault() { return "Hello"; }
+	  @GetMapping("/api/") private String getDefault() { return "Hello"; }
 	 
 
 	/*
@@ -39,16 +39,16 @@ public class EmployeesController {
 	 * model.addAttribute("listEmployees", listEmployees); return "index"; }
 	 */
 	
-	@GetMapping("/list")
+	@GetMapping("/api/list")
 	private List<Employees> getAllEmployees() {
 		return employeeService.getAllEmployees();
 	}
-	@GetMapping("/listDept")
+	@GetMapping("/api/listDept")
 	private List<Dept> getAllDept() {
 		return deptService.getAllDept();
 	}
 
-	@PostMapping("/addEmp")
+	@PostMapping("/api/addEmp")
 	private int saveEmployee(@RequestBody Employees employee) {
 	
 		//Employees employee =  new Employees(counter.incrementAndGet(), name);
@@ -56,7 +56,7 @@ public class EmployeesController {
 	 return employee.getEmpId();
 	}
 
-	@GetMapping("/employee/{empid}")
+	@GetMapping("/api/employee/{empid}")
 	private Employees getEmployee(@PathVariable("empid") int empid) {
 
 		return employeeService.getEmployeeById(empid);

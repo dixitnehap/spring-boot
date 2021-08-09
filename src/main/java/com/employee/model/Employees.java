@@ -21,6 +21,8 @@ public class Employees {
 		this.empName = empName;
 	}
 	
+	public Employees() {  
+	}  
 	
 	public int getEmpId() {
 		return empId;
