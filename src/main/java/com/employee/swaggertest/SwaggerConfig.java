@@ -23,7 +23,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket postApi() {
 		return new Docket(DocumentationType.SWAGGER_2)
-				.select().apis(RequestHandlerSelectors.basePackage("com.employee.controllers")).paths(regex("/api.*")).build();
+				.select().apis(RequestHandlerSelectors.basePackage("com.employee.controllers")).paths(regex("/*.*")).build();
 		
 	}
 }
