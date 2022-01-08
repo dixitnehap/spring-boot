@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  spring-boot:
+     build:
+       context: .
+       dockerfile: Dockerfile
+     image: nehapdixit/employee-db-operation:0.0.1
+     environment:
+        SPRING_DATASOURCE_URL: jdbc:postgresql://mydb:5432/db
+     ports:
+       - "8080:8080"
+     networks:
+       - spring-cloud-network
+     depends_on:
+       - mydb
+  mydb:
+    image: postgres:9.4
+    environment:
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: admin
+    ports: 
+      - "5432:5432"
+    networks:
+       - spring-cloud-network
+       
+networks:
+  spring-cloud-network:
+    driver: bridge
