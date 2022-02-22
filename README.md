@@ -1,5 +1,5 @@
 Employee management system.
-Technologies used : Spring boot, H2 database
+Technologies used : Spring boot, Postgres database with docker compose
 
 Description: Sample application to demo Employee add and list operation using swagger ui. Department table is fixed and loaded in memory on application start up.
 
