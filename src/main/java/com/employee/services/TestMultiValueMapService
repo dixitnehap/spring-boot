@@ -1,0 +1,88 @@
+/*
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+
+@Service
+@Slf4j
+public class TestMultiValueMapService {
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	public ResponseEntity<String> ThirPartyAddProfileImage(
+			AddProfileImageRequest requestBody, String authorization) throws IOException {
+
+		MultiValueMap<String, Object> map= new LinkedMultiValueMap<String, Object>();
+		map.add("step", requestBody.getStep());
+		map.add("data_type", requestBody.getDocumentType());
+		map.add("document[]",getContentAsResource("https://cdn-icons-png.flaticon.com/512/123/123172.png"));
+		map.add("geo_lat", requestBody.getGeoLat());
+		map.add("geo_lang", requestBody.getGeoLong());
+
+		headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+		HttpEntity<MultiValueMap<String, Object>> httpEntity =
+				new HttpEntity<MultiValueMap<String, Object>>(map, headers);
+
+		String serverUrl = "https://thirdpary.dummy:9000/api/add/profile/image";
+
+		ResponseEntity<String> response = restTemplate
+				.postForEntity(serverUrl, httpEntity, String.class);
+		System.out.println(response);
+
+		return null;
+	}
+
+	private ByteArrayResource getContentAsResource(String url) throws IOException {
+		ByteArrayResource contentsAsResource = null;
+		URL url1 = new URL(url);
+		url1.getFile();
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		InputStream is = null;
+		try {
+			is = url1.openStream ();
+			byte[] byteChunk = new byte[4096]; // Or whatever size you want to read in at a time.
+			int n;
+
+			while ( (n = is.read(byteChunk)) > 0 ) {
+				baos.write(byteChunk, 0, n);
+			}
+		}
+		catch (IOException e) {
+			System.err.printf ("Failed while reading bytes from %s: %s", url1.toExternalForm(), e.getMessage());
+			e.printStackTrace ();
+			// Perform any other exception handling that's appropriate.
+		}
+		finally {
+			if (is != null) { is.close(); }
+		}
+
+		return new ByteArrayResource(baos.toByteArray()){
+			@Override
+			public String getFilename() {
+				return url1.getFile();
+			}};
+		}
+	}
+}*/
